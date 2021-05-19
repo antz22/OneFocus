@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  /* font-family: "Lato"; */
+  color: rgb(19, 36, 36);
+  height: 100%;
+  background: rgb(101, 31, 87);
+  background: linear-gradient(
+    45deg,
+
+    #0093E9 0%,
+    #80D0C7 100%
+
+
+    /* #C06C84 0%,
+    #ff5f6d 48%,
+    #ffc371 100% */
+
+    /* #355C7D 0%,
+    #6C5B7B 48%,
+    #C06C84 100% */
+
+    /* rgb(0, 131, 109) 0%,
+    rgb(0, 87, 90) 48%,
+    rgb(0, 125, 175) 100% */
+
+    /* rgba(101, 31, 87, 1) 0%,
+    rgba(225, 113, 87, 1) 48%,
+    rgba(249, 248, 113, 1) 100% */
+
+    /* https://uigradients.com/#KimobyIsTheNewBlue */
+
+  );
+}
+
+
+.header1 {
+    padding: 2.5rem;
+    text-align: center;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+}
+
+.header2 {
+    padding: 2.5rem;
+    text-align:center;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+}
