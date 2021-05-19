@@ -44,19 +44,22 @@ export default {
 <style scoped>
 
 .container {
-  @apply mx-auto;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   font-size: 1.25rem;
 }
 
 .label {
-  @apply pb-4;
+  padding-bottom: 16px;
 }
 
 .loading-bar {
-  @apply mx-auto shadow-md;
+  @apply shadow-md;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
-  width: 800px;
+  width: 400px;
   height: 15px;
   border-radius: 15px;
   overflow: hidden;
@@ -94,16 +97,22 @@ export default {
 }
 
 .change-progress > input {
-  @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1 h-10 border-red-300 rounded-md;
+  @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1 border-red-300;
   width: 60px;
+  height: 40px;
+  border-radius: 6px;
   border-width: 3.0px;
   box-sizing: border-box;
   padding: 8px;
 }
 
 .change-progress > button {
-  @apply shadow-sm rounded-md h-10 w-28 mt-12 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1;
+  @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1;
+  border-radius: 6px;
+  width: 112px;
+  height: 40px;
   background-color: rgb(129, 223, 255);
+  margin-top: 48px;
 }
 
 
@@ -111,5 +120,16 @@ export default {
   @apply bg-blue-300;
 }
 
+@media (min-width: 800px) {
+  .loading-bar {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .loading-bar {
+    width: 800px;
+  }
+}
 
 </style>

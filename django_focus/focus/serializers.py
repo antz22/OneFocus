@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import User, Task, Category, Goal
+from .models import User, Task, Goal, Quote
 
 
 class TaskSerializer(serializers.ModelSerializer):
@@ -23,4 +23,13 @@ class GoalSerializer(serializers.ModelSerializer):
             "goal",
             "progress",
             "progressLimit",
+        )
+
+class QuoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Quote
+        fields = (
+            "id",
+            "author",
+            "content",
         )

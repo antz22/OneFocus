@@ -5,20 +5,21 @@
       <h1 id="header">Pomodoro Focus <img src="../assets/stopwatch.svg"> </h1>
 
       <div id="base-timer">
-        <BaseTimer :timeLeft="timeLeft" :timeLimit="timeLimit"/>
+        <BaseTimer :timeLeft="timeLeft" :timeLimit="timeLimit" @timerDone="pauseTimer"/>
       </div>
       <div id="break-timer">
-        <BaseTimer :small="true" :timeLeft="breakTimeLeft" :timeLimit="breakTimeLimit"/>
+        <BaseTimer :small="true" :timeLeft="breakTimeLeft" :timeLimit="breakTimeLimit" @timerDone="resetTimer"/>
       </div>
 
       <div class="timer-btns">
         <button v-if="breakTimerOn" @click="breakStartTimer">Start Break?</button>
 
-        <button v-if="!timerOn" @click="timerOn = !timerOn; startTimer();">Start</button>
+        <h1 v-if="hours == 0 && mins == 0" class="text-xl">Input a time for a focus session:</h1>
+        <button v-if="!timerOn && (hours > 0 || mins > 0)" @click="timerOn = !timerOn; startTimer();">Start</button>
         <button v-if="timerOn" @click="timerOn = !timerOn; resetTimer();">Reset</button>
 
         <button v-if="showPaused && !paused" @click="pauseTimer">Pause</button>
-        <button v-if="showPaused && paused" @click="startTimer">Start</button>
+        <button v-if="showPaused && paused" @click="startTimer">Resume</button>
       </div>
 
       <div v-if="!timerOn" class="set-timer">
@@ -115,27 +116,39 @@ export default {
 <style scoped>
 
 .timer {
-  @apply text-center mb-12;
+  text-align: center;
+  margin-bottom: 48px;
 }
 
 #break-timer {
-  @apply ml-80;
+  margin-left: 320px;
 }
 
 #header {
-  @apply font-semibold text-xl pb-10;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  padding-bottom: 40px;
 }
 
 #header > img {
-  @apply w-10 h-10 mx-auto inline-block;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40px;
+  height: 40px;
 }
 
 .timer-btns {
-  @apply pt-10 pb-10 space-x-5;
+  @apply space-x-5;
+  padding-top: 40px;
+  padding-bottom: 40px; 
 }
 
 .timer-btns > button {
-  @apply bg-blue-500 rounded-md p-3;
+  @apply bg-blue-500;
+  padding: 12px;
+  border-radius: 6px;
 }
 
 .set-timer {
@@ -143,12 +156,14 @@ export default {
 }
 
 .set-timer > h1 {
-  @apply inline-block text-xl;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 28px;
   font-weight: 500;
 }
 
 .set-timer > pre {
-  @apply inline-block;
+  display: inline-block;
 }
 
 </style>

@@ -108,7 +108,17 @@ export default {
       if (seconds < 10) {
         seconds = `0${seconds}`
       }      // The output in MM:SS format
-      return `${hours}:${minutes}.${seconds}`
+
+      if (hours == 0) {
+        return `${minutes}:${seconds}`
+      } else {
+        if (hours < 0 || minutes < 0) {
+          this.$emit('timerDone')
+          return `00:00.00`
+        } else {
+          return `${hours}:${minutes}.${seconds}`
+        }
+      }
     },
     // Update the dasharray value as time passes, starting with 283
     circleDasharray() {
@@ -152,14 +162,16 @@ export default {
 <style scoped>
 /* Sets the containers height and width */
 .base-timer {
-  @apply mx-auto;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
   width: 300px;
   height: 300px;/* Removes SVG styling that would hide the time label */
 }
 
 .small-timer {
-  @apply mx-auto;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
   width: 170px;
   height: 170px;/* Removes SVG styling that would hide the time label */
@@ -224,9 +236,9 @@ export default {
   color: red;
 }
 
-
 .__svg {
   /* Flips the svg and makes the animation to move left-to-right */
   transform: scaleX(-1);
 }
+
 </style>

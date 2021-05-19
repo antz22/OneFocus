@@ -1,33 +1,29 @@
 <template>
   <div id="goals">
-    <div class="form">
-      <form @submit.prevent="submitForm" id="createGoal">
-        <div>
-          <label>What is your goal?</label>
-          <br>
-          <input type="text" v-model="goal">
-        </div>
-        <div>
-          <label>Have you made any progress yet?</label>
-          <br>
-          <input class="num-input" type="text" placeholder="hi" v-model="progress"> 
-        </div>
-        <div>
-          <label>Progress limit, upper bound?</label>
-          <br>
-          <input class="num-input" type="text" placeholder="00" v-model="progressLimit">
-        </div>
-        <!-- <div>
-          <label>How long will it take to accomplish this goal?</label>
-          <br>
-          <input class="num-input" type="number" min="0" max="23" placeholder="00" step="1" v-model="hours"> hours, 
-          <input class="num-input" type="number" min="0" max="59" placeholder="00" step="5" v-model="mins"> mins
-        </div> -->
-        <div>
-          <button form="createGoal">Create Goal</button>
-        </div>
-      </form>
-    </div>
+    <form @submit.prevent="submitForm" class="task-form" id="createGoal">
+      <div>
+        <label>What is your goal?</label>
+        <br>
+        <input type="text" v-model="goal">
+      </div>
+      <div>
+        <label>What's the limit of what you want to measure your progress by?</label>
+        <br>
+        <label>(ex. 90 days, 10 homework assignments, etc)</label>
+        <br>
+        <input class="num-input" type="number" v-model="progressLimit">
+      </div>
+      <div>
+        <label>Have you made any progress on this goal yet?</label>
+        <br>
+        <label>(ex. finished 5/10 assignments already)</label>
+        <br>
+        <input class="num-input" type="number" v-model="progress"> 
+      </div>
+      <div>
+        <button form="createGoal">Create Goal</button>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -100,10 +96,6 @@ export default {
 
 #goals {
   height: 100vh;
-}
-
-.form > form > div > button {
-  @apply w-32;
 }
 
 </style>

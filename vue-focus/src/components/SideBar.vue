@@ -32,7 +32,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .slide-enter-active,
 .slide-leave-active {
   transition: transform 0.2s ease;
@@ -68,7 +68,7 @@ export default {
 }
 
 .sidebar-panel > span {
-  @apply text-gray-100 hover:text-white transition duration-300;
+  @apply text-gray-100 hover:text-white transition;
   text-decoration: none;
   font-size: 2.0rem;
   display: block;
@@ -76,7 +76,7 @@ export default {
   padding-left: 1.5em;
   top: 50%;
   transform: translate(0%, 50%);
-
+  transition-duratoin: 300ms;
 }
 
 </style>

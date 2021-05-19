@@ -7,15 +7,17 @@ body {
   border: 0;
   margin: 0;
   padding: 0;
-  /* font-family: "Lato"; */
   color: rgb(19, 36, 36);
   height: 100%;
-  background: rgb(101, 31, 87);
+  /* background: rgb(101, 31, 87); */
   background: linear-gradient(
     45deg,
 
-    #0093E9 0%,
-    #80D0C7 100%
+    /* #0093E9 0%, */
+    #12a7cc 0%,
+    #12a7cd 100%
+    /* #3ec3e4 100% */
+    /* #80D0C7 48%, */
 
 
     /* #C06C84 0%,
@@ -39,19 +41,107 @@ body {
   );
 }
 
-
 .header1 {
-    padding: 2.5rem;
-    text-align: center;
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-    font-weight: 700;
+  padding: 2.5rem;
+  text-align: center;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
 }
 
 .header2 {
-    padding: 2.5rem;
-    text-align:center;
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-    font-weight: 700;
+  padding: 2.5rem;
+  text-align: center;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
 }
+
+.user-form {
+  text-align: center;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.user-form > div > input {
+  @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-red-300;
+  height: 40px;
+  width: 256px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border-width: 3.0px;
+  box-sizing: border-box;
+  padding: 5px;
+  font-size: 1.0rem;
+}
+
+
+.user-form > div > button {
+  @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500;
+  height: 40px;
+  width: 112px;
+  margin-top: 48px;
+  border-radius: 6px;
+  background-color: rgb(129, 223, 255);
+}
+
+.user-form > div > button:hover {
+  @apply bg-blue-300;
+}
+
+.form-text > p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.form-text > p > a {
+  @apply text-blue-600;
+}
+
+.task-form {
+  @apply container space-y-4;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.task-form > div {
+  @apply space-y-10;
+  margin-bottom: 40px;
+}
+
+.task-form > div > input {
+  @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-red-300;
+  height: 2.5rem;
+  border-radius: 6px;
+  border-width: 3.0px;
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+.task-form > div > input[type=text] {
+  width: 400px;
+}
+
+.task-form > div > label {
+  font-weight: 600;
+}
+
+.task-form > div > button {
+  @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500;
+  border-radius: 6px;
+  height: 40px;
+  width: 112px;
+  margin-top: 48px;
+  background-color: rgb(129, 223, 255);
+}
+
+.num-input {
+  width: 56px;
+}
+

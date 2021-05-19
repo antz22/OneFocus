@@ -57,15 +57,22 @@ export default {
 <style scoped>
 
 h1 {
-  @apply text-center text-4xl;
+  font-size: 36px;
+  line-height: 40px;
+  text-align: center;
 }
 
 #hamborg {
-  @apply absolute text-center object-none object-center w-12 h-12 transition duration-300 hover:bg-gray-500 hover:bg-opacity-25;
+  @apply transition hover:bg-gray-500 hover:bg-opacity-25;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  text-align: center;
   border-radius: 4px;
   top: 2rem;
   left: 2rem;
   transform: translate(0%, 0%);
+  transition-duration: 300ms;
 }
 
 ul.sidebar-panel-nav {
@@ -74,7 +81,7 @@ ul.sidebar-panel-nav {
 }
 
 ul.sidebar-panel-nav > li > a {
-  @apply text-gray-400 hover:text-white transition duration-300;
+  @apply text-gray-400 hover:text-white transition;
   text-decoration: none;
   font-size: 2.0rem;
   display: block;
@@ -82,10 +89,11 @@ ul.sidebar-panel-nav > li > a {
   padding-left: 1.5em;
   top: 50%;
   transform: translate(0%, 50%);
+  transition-duration: 300ms;
 }
 
 ul.sidebar-panel-nav > li > a > i {
-  @apply w-20;
+  width: 80px;
 }
 
 ul.sidebar-panel-nav > li > .router-link-exact-active {
@@ -95,7 +103,6 @@ ul.sidebar-panel-nav > li > .router-link-exact-active {
 .btn-menu {
   @apply focus:outline-none focus:border-transparent focus:ring-blue-200;
   outline: none;
-
 }
 
 </style>

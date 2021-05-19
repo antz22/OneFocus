@@ -46,12 +46,13 @@ export default {
 
 /* Create a custom checkbox */
 .checkmark {
-  @apply shadow-md rounded-md;
+  @apply shadow-md;
   position: absolute;
   top: 0;
   right: 2.5em;
   height: 30px;
   width: 30px;
+  border-radius: 6px;
   background-color: rgb(155, 155, 155);
 }
 

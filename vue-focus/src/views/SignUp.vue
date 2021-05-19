@@ -1,6 +1,9 @@
 <template>
   <div id="signup">
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="submitForm" class="user-form">
+      <div class="form-text">
+        <p>Sign up: It's easy, get started today :)</p>
+      </div>
       <div>
         <label>Username</label>
         <br>
@@ -16,11 +19,15 @@
         <br>
         <input type="password" v-model="password2">
       </div>
-      <div v-if="errors.length">
+      <div v-if="errors.length" class="form-text">
         <p v-for="error in errors" :key="error">{{ error }}</p>
       </div>
       <div>
         <button>Sign Up</button>
+      </div>
+      <div class="form-text">
+        <br>
+        <p>Or <router-link to="/log-in">login</router-link> here</p>
       </div>
     </form>
   </div>
@@ -53,7 +60,8 @@ export default {
       }
 
       if (this.password !== this.password2) {
-        this.errors.push('THe passwords don\'t match.') }
+        this.errors.push('THe passwords don\'t match.') 
+      }
 
       if (!this.errors.length) {
         const formData = {
@@ -102,37 +110,6 @@ export default {
 
 #signup {
   height: 100vh;
-}
-
-
-form {
-  @apply text-center text-xl;
-}
-
-label {
-  /* @apply text-left; */
-}
-
-form > div > input {
-  @apply w-64 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1 h-10 border-red-300 rounded-md;
-  border-width: 3.0px;
-  box-sizing: border-box;
-  padding: 5px;
-  font-size: 1.0rem;
-}
-
-form > div {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-form > div > button {
-  @apply shadow-sm rounded-md h-10 w-28 mt-12 focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1;
-  background-color: rgb(129, 223, 255);
-}
-
-form > div > button:hover {
-  @apply bg-blue-300;
 }
 
 </style>

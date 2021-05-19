@@ -1,20 +1,19 @@
 <template>
   <div id="home">
-    <!-- <div class="home-images">
-      <div class="inline-block column">
-        <img alt="Pleasant photos." src="../assets/snowystreet.jpg">
+    <div class="display-quote">
+      <div class="quote-content">
+        <p>"{{ quote.content }}"</p>
       </div>
-      <div class="inline-block column">
-        <img alt="Pleasant photos." src="../assets/girl.jpg">
+      <div class="quote-author">
+        <p>{{ quote.author }}</p>
       </div>
-      <div class="inline-block column">
-        <img alt="Pleasant photos." src="../assets/rainystreet.jpg">
-      </div>
-    </div> -->
+    </div>
     <h1 class="header2 mt-4">Tasks</h1>
     <div class="todos">
       <div v-if="tasks.length === 0">
-        <h1>No tasks. All done!</h1>
+        <div class="task-header">
+          <h1>No tasks. All done!</h1>
+        </div>
       </div>
       <div
         class="container mx-auto"
@@ -31,8 +30,8 @@
               </div>
 
               <!--Archive / delete-->
-              <div class="inline-block float-right pt-8 btn">
-                <button @click="deleteTask(task.id); getTasks()">Archive Task</button>
+              <div class="inline-block archive-task">
+                <button @click="deleteTask(task.id); getTasks()">Archive</button>
               </div>
             </div>
 
@@ -48,7 +47,7 @@
                   <CheckBox @click="completeTask(task.id, true); getTasks()" />
                 </div>
                 <div v-else>
-                  <div class="pr-16">
+                  <div class="pr-16 pt-3">
                     <i class="fas fa-check"></i>
                   </div>
                 </div>
@@ -74,7 +73,9 @@
     <h1 class="header2 mt-4">Goals</h1>
     <div class="goals">
       <div v-if="goals.length === 0">
-        <h1>You currently do not have any goals set.</h1>
+        <div class="goal-header">
+          <h1>You currently do not have any goals set.</h1>
+        </div>
       </div>
       <div v-else
         class="container mx-auto"
@@ -83,16 +84,14 @@
       >
         <div class="display-items">
           <div class="display-goal">
-            <div class="row1-goal">
-              <div class="float-right">
-                <button @click="deleteGoal(goal.id); getGoals()">Archive Goal</button>
-              </div>
-            </div>
             <br>
             <div class="goal-header">
               <h1>{{ goal.goal }}</h1>
             </div>
             <ProgressBar @changeProgress="updateProgress(goal.id, $event); getGoals()" :progressValue="goal.progress" :progressLimit="goal.progressLimit"/>
+            <div class="archive-goal">
+              <button @click="deleteGoal(goal.id); getGoals()">Archive</button>
+            </div>
           </div>
         </div>
       </div>
@@ -114,6 +113,7 @@ export default {
     return {
       tasks: [],
       goals: [],
+      quote: [],
     }
   },
   components: {
@@ -125,9 +125,20 @@ export default {
   },
   mounted() {
     this.getTasks(),
-    this.getGoals()
+    this.getGoals(),
+    this.getQuote()
   },
   methods: {
+		getQuote() {
+      axios
+        .get('/api/v1/quotes/')
+        .then(response => {
+          this.quote = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+		},
     getTasks() {
       axios
         .get('/api/v1/tasks/')
@@ -169,24 +180,25 @@ export default {
         })
     },
     deleteTask(task_id) {
-      confirm('Are you sure?')
-      const formData = {
-        id: task_id,
-      }
-      axios
-        .post('/api/v1/delete-task/', formData)
-        .then(response => {
-          toast({
-            message: 'Task archived.',
-            type: 'is-success',
-            dismissible: true,
-            pauseOnHover: true,
-            duration: 2000,
-            position: 'top-right',
+      if (confirm('Are you sure?')) {
+        const formData = {
+          id: task_id,
+        }
+        axios
+          .post('/api/v1/delete-task/', formData)
+          .then(response => {
+            toast({
+              message: 'Task archived.',
+              type: 'is-success',
+              dismissible: true,
+              pauseOnHover: true,
+              duration: 2000,
+              position: 'top-right',
+            })
+  
+            this.$router.push('/')
           })
-
-          this.$router.push('/')
-        })
+      }
     },
     updateProgress(goal_id, progress) {
       const formData = {
@@ -209,24 +221,25 @@ export default {
         })
     },
     deleteGoal(goal_id) {
-      confirm('Are you sure?')
-      const formData = {
-        id: goal_id,
-      }
-      axios
-        .post('/api/v1/delete-goal/', formData)
-        .then(response => {
-          toast({
-            message: 'Goal archived.',
-            type: 'is-success',
-            dismissible: true,
-            pauseOnHover: true,
-            duration: 2000,
-            position: 'bottom-right',
+      if (confirm('Are you sure?')) {
+        const formData = {
+          id: goal_id,
+        }
+        axios
+          .post('/api/v1/delete-goal/', formData)
+          .then(response => {
+            toast({
+              message: 'Goal archived.',
+              type: 'is-success',
+              dismissible: true,
+              pauseOnHover: true,
+              duration: 2000,
+              position: 'bottom-right',
+            })
+  
+            this.$router.push('/')
           })
-
-          this.$router.push('/')
-        })
+      }
     },
   }
 }
@@ -235,140 +248,144 @@ export default {
 <style scoped>
 
 #home {
-  @apply h-full;
+  height: 100%;
 }
 
-.home-images {
-  @apply space-x-6 h-auto container mx-auto text-center;
+.display-quote {
+  text-align: center;
 }
 
-.column {
-  @apply max-w-sm;
+.quote-content {
+  font-size: 24px;
+  font-style: italic;
+}
+
+.quote-author {
+  font-size: 19px;
 }
 
 .display-items {
-  @apply text-xl mb-4;
+  font-size: 20px;
+  line-height: 28px;
+  margin-bottom: 16px;
 }
 
 .display-task {
-  @apply rounded-md shadow-xl duration-200 m-4 mb-8;
+  @apply shadow-xl;
+  margin: 16px;
+  margin-bottom: 32px;
   border-width: 1px;
+  border-radius: 6px;
   border-color: #0395E8;
   background-color: #0395E8;
-
+  transition-duration: 200ms;
 }
 
 .display-task:hover {
-  @apply duration-200;
   background-color: #75CBCA;
   border-color: #75CBCA;
+  transition-duration: 200ms;
 }
 
-.display-task:hover .btn {
-  visibility: visible;
-  transition: all 0.5s linear;
+.display-task:hover .archive-task > button {
+  height: auto;
+  opacity: 1;
+  /* transition: height 0ms 0ms, opacity 600ms 0ms; */
+}
+
+.archive-task {
+  margin-top: 32px;
+  margin-right: 32px;
+  float: right;
+}
+
+.archive-task > button {
+  @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  /* transition: height 0ms 400ms, opacity 0ms 0ms; */
+  font-size: 18px;
+  border-radius: 2px;
+  width: 80px;
+  background-color: rgb(129, 223, 255);
+
 }
 
 .row1 > div > h1 {
-  @apply text-2xl text-left ml-8 mt-8 mb-6;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: left;
+  margin-left: 32px;
+  margin-top: 32px;
+  margin-bottom: 24px;
 }
-
-.row1 > div > button {
-  @apply float-right pr-16;
-}
-
-.btn {
-  visibility: hidden;
-}
-
 
 .row2 {
-  @apply text-xl ml-8 mb-6;
+  font-size: 20px;
+  line-height: 28px;
+  margin-left: 32px;
+  margin-bottom: 24px;
 }
 
 .row3 {
-  @apply text-left ml-8 mb-8;
-}
-
-
-
-/* .side-left {
-  @apply text-left float-left;
-}
-
-.side-right {
-  @apply text-right float-right;
-}
-
-.side-left > p {
-  @apply mt-8;
-}
-
-.display-task > p {
-  @apply text-xl text-left ml-8 mt-6 mb-4;
-} */
-
-
-.display-task > input {
-  @apply inline-block;
+  text-align: left;
+  margin-left: 32px;
+  margin-bottom: 32px;
 }
 
 .goals {
-  @apply mb-12;
+  margin-bottom: 48px;
 }
 
 .display-goal {
-  @apply rounded-lg shadow-xl duration-200 m-4 pb-8 mb-8;
+  @apply shadow-xl;
+  margin: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-radius: 8px;
   border-width: 1px;
   border-color: #0395E8;
   background-color: #0395E8;
-
+  transition-duration: 200ms;
 }
 
 .display-goal:hover {
-  @apply duration-200;
   background-color: #75CBCA;
   border-color: #75CBCA;
-
+  transition-duration: 200ms;
 }
 
-.row1-goal > div > h1 {
-  @apply text-center mt-4 mb-8;
+.display-goal:hover .archive-goal > button {
+  height: auto;
+  opacity: 1;
+  transition: height 0ms 0ms, opacity 600ms 0ms;
 }
 
-.display-goal > p {
-  @apply text-xl text-center;
+.archive-goal {
+  margin-top: -36px;
+  margin-right: 42px;
+  float: right;
+}
+.archive-goal > button {
+  @apply shadow-sm focus:ring-indigo-500 focus:border-indigo-500 focus:ring-1;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  width: 80px;
+  transition: height 0ms 400ms, opacity 0ms 0ms;
+  font-size: 18px;
+  border-radius: 2px;
+  background-color: rgb(129, 223, 255);
 }
 
-.display-goal > input {
-  @apply inline-block;
+.goal-header > h1, .task-header > h1 {
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 32px;
 }
-
-.goal-header > h1 {
-  @apply text-center text-3xl mt-4 mb-8;
-
-}
-
-
-/* input[type="checkbox"] {
-  @apply text-left;
-}
-
-input[type="checkbox"]:checked {
-  display: none;
-}
-
-i {
-  display: none;
-}
-
-input[type="checkbox"]:checked + i,.test {
-  display: block;
-}
-
-.test {
-  display:none;
-} */
 
 
 </style>

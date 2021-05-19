@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="submitForm" class="user-form">
       <div>
         <label>Username</label>
         <br>
@@ -12,13 +12,15 @@
         <input type="password" v-model="password">
       </div>
       <div v-if="errors.length">
-        <p v-for="error in errors" :key="error">{{ error }}</p>
+        <div class="form-text">
+          <p v-for="error in errors" :key="error">{{ error }}</p>
+        </div>
       </div>
       <div>
         <button>Log In</button>
       </div>
     </form>
-    <div>
+    <div class="form-text">
       <br>
       <p>Don't have an account yet? <router-link to="/sign-up">Sign up here!</router-link></p>
       <!-- <p>It's easy, get started today :)</p> -->
@@ -93,14 +95,6 @@ export default {
 
 #login {
   height: 100vh;
-}
-
-div > p {
-  @apply text-center mt-5 text-lg;
-}
-
-div > p > a {
-  @apply text-blue-600;
 }
 
 </style>

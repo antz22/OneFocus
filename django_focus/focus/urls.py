@@ -9,4 +9,5 @@ urlpatterns = [
     path('delete-goal/', views.deleteGoal),
     path('tasks/', views.TasksList.as_view()),
     path('goals/', views.GoalsList.as_view()),
+    path('quotes/', views.QuotesList.as_view()),
 ]

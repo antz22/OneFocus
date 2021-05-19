@@ -6,10 +6,6 @@ class User(AbstractUser):
     pass
 
 
-class Category(models.Model):
-    category = models.CharField(max_length=64, blank=True, null=True)
-
-
 class Task(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="tasks")
@@ -25,3 +21,8 @@ class Goal(models.Model):
     goal = models.TextField()
     progress = models.IntegerField()
     progressLimit = models.IntegerField()
+
+
+class Quote(models.Model):
+    author = models.TextField()
+    content = models.TextField()
