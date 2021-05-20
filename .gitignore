@@ -1,6 +1,9 @@
+# Deployment files
 **/.DS_Store
 **/node_modules
 **/dist
+**/staticfiles
+
 
 
 # local env files
