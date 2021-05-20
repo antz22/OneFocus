@@ -5,10 +5,10 @@
       <h1 id="header">Pomodoro Focus <img src="../assets/stopwatch.svg"> </h1>
 
       <div id="base-timer">
-        <BaseTimer :timeLeft="timeLeft" :timeLimit="timeLimit" @timerDone="pauseTimer"/>
+        <BaseTimer :timeLeft="timeLeft" :timeLimit="timeLimit" @timerDone="pauseTimer(); playAlarm();"/>
       </div>
       <div id="break-timer">
-        <BaseTimer :small="true" :timeLeft="breakTimeLeft" :timeLimit="breakTimeLimit" @timerDone="resetTimer"/>
+        <BaseTimer :small="true" :timeLeft="breakTimeLeft" :timeLimit="breakTimeLimit" @timerDone="resetTimer(); playAlarm();"/>
       </div>
 
       <div class="timer-btns">
@@ -99,6 +99,11 @@ export default {
       this.breakTimeLimit = 60*this.breakMins
       this.breakTimerInterval = setInterval(() => (this.breakTimePassed += 1), 1000)
       setTimeout(() => { clearInterval(this.breakTimerInterval); this.breakTimerOn = false; this.timerOn = false; }, this.breakTimeLimit*1000+1000)
+    },
+    playAlarm() {
+      alert('Time is up!')
+      var audio = new Audio(require('../assets/timer_alert.mp3'))
+      audio.play()
     }
   },
   computed: {

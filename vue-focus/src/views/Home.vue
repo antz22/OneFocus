@@ -308,7 +308,8 @@ export default {
   font-size: 18px;
   border-radius: 2px;
   width: 80px;
-  background-color: rgb(129, 223, 255);
+  /* background-color: rgb(129, 223, 255); */
+  background-color: #12a7cc;
 
 }
 

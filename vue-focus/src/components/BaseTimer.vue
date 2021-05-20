@@ -97,24 +97,23 @@ export default {
   },
   computed: {
     formattedTimeLeft() {
-      const timeLeft = this.timeLeft      // The largest round integer less than or equal to the result of time divided being by 60.
-      const hours = Math.floor(timeLeft / 3600)      // Seconds are the remainder of the time divided by 60 (modulus operator)
-      // let minutes = Math.floor(timeLeft / 60)      // If the value of seconds is less than 10, then display seconds with a leading zero
-      let minutes = Math.floor((timeLeft % 3600)/60)     // If the value of seconds is less than 10, then display seconds with a leading zero
+      const timeLeft = this.timeLeft   
+      const hours = Math.floor(timeLeft / 3600)    
+      let minutes = Math.floor((timeLeft % 3600)/60) 
       let seconds = timeLeft % 60
       if (minutes < 10) {
         minutes = `0${minutes}`
-      }      // The output in MM:SS format
+      }
       if (seconds < 10) {
         seconds = `0${seconds}`
-      }      // The output in MM:SS format
+      }
 
       if (hours == 0) {
         return `${minutes}:${seconds}`
       } else {
         if (hours < 0 || minutes < 0) {
           this.$emit('timerDone')
-          return `00:00.00`
+          return `00:00`
         } else {
           return `${hours}:${minutes}.${seconds}`
         }
@@ -160,6 +159,16 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'RobotoMono';
+  src: url(../assets/RobotoMono-Light.ttf);
+}
+
+@font-face {
+  font-family: 'RobotoMonoBold';
+  src: url(../assets/RobotoMono-Regular.ttf);
+}
+
 /* Sets the containers height and width */
 .base-timer {
   margin-left: auto;
@@ -198,6 +207,8 @@ export default {
   align-items: center;
   justify-content: center;    /* Sort of an arbitrary number; adjust to your liking */
   font-size: 48px;
+
+  font-family: 'RobotoMono';
 }
 
 .small-label {
@@ -211,6 +222,8 @@ export default {
   align-items: center;
   justify-content: center;    /* Sort of an arbitrary number; adjust to your liking */
   font-size: 24px;
+
+  font-family: 'RobotoMonoBold';
 }
 
 .__path-remaining {
