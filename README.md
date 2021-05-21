@@ -2,15 +2,20 @@
 
 OneFocus is an application that allows students to work and study in a motivated, efficient and flexible manner.
 
-Front end repo: [vue-onefocus](https://github.com/antz22/vue-onefocus)
-Back end repo: [django-onefocus](https://github.com/antz22/django-onefocus)
+## Front end: [vue-onefocus](https://github.com/antz22/vue-onefocus?raw=true)
+## Back end: [django-onefocus](https://github.com/antz22/django-onefocus?raw=true)
+
 (separate repos for deployment purposes)
+
+![OneFocus](https://github.com/antz22/OneFocus/blob/master/images/onefocus.png)
 
 ## Features
 
 ### Tasks
 
-OneFocus provides a minimalastic task list that lets students organize their lives in a neat and aesthetic way. 
+![Tasks](https://github.com/antz22/OneFocus/blob/master/images/tasks.png)
+
+OneFocus provides a minimalistic task list that lets students organize their lives in a neat and aesthetic way. 
 
 Tasks can be added with an estimated time-to-complete, attached with a particular goal or motivation that puts the task into perspective.
 
@@ -18,6 +23,8 @@ Users can check off tasks when they are done and archive them to remove them fro
 
 
 ### Goals
+
+![Goals](https://github.com/antz22/OneFocus/blob/master/images/goals.png)
 
 With added support for keeping track of goals, students can keep their motivation in the long term while they create short term tasks. 
 
@@ -29,6 +36,8 @@ Once a goal is set, users can update their goals at any time, and archive them o
 
 
 ### Pomodoro
+
+![Pomodoro](https://github.com/antz22/OneFocus/blob/master/images/pomodoro.png)
 
 A pomodoro timer can be accessed as well, which allows users to set intervals for focus, and for breaks. 
 
@@ -49,3 +58,4 @@ The front end was depoyed with netlify, and the backend was deployed with heroku
 - Button styling
 - Create README and about page
 - Add screenshots
+- Number input width
