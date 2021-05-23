@@ -2,18 +2,16 @@
 
 OneFocus is an application that allows students to work and study in a motivated, efficient and flexible manner.
 
-## Front end: [vue-onefocus](https://github.com/antz22/vue-onefocus?raw=true)
-## Back end: [django-onefocus](https://github.com/antz22/django-onefocus?raw=true)
+## Front end: [vue-onefocus](https://github.com/antz22/vue-onefocus)
+## Back end: [django-onefocus](https://github.com/antz22/django-onefocus)
 
 (separate repos for deployment purposes)
 
-![OneFocus](https://github.com/antz22/OneFocus/blob/master/images/onefocus.png)
+![OneFocus](https://github.com/antz22/OneFocus/blob/master/images/onefocus.png | width=150)
 
 ## Features
 
 ### Tasks
-
-![Tasks](https://github.com/antz22/OneFocus/blob/master/images/tasks.png)
 
 OneFocus provides a minimalistic task list that lets students organize their lives in a neat and aesthetic way. 
 
@@ -23,8 +21,6 @@ Users can check off tasks when they are done and archive them to remove them fro
 
 
 ### Goals
-
-![Goals](https://github.com/antz22/OneFocus/blob/master/images/goals.png)
 
 With added support for keeping track of goals, students can keep their motivation in the long term while they create short term tasks. 
 
@@ -37,8 +33,6 @@ Once a goal is set, users can update their goals at any time, and archive them o
 
 ### Pomodoro
 
-![Pomodoro](https://github.com/antz22/OneFocus/blob/master/images/pomodoro.png)
-
 A pomodoro timer can be accessed as well, which allows users to set intervals for focus, and for breaks. 
 
 This gives users a more full-fledged and distraction less experience for their studies.
@@ -49,6 +43,12 @@ This gives users a more full-fledged and distraction less experience for their s
 OneFocus consists of a front end built with vue.js and tailwindcss, and a back end built with Django (API, database) and Django Rest Framework (API, serializers). 
 
 The front end was depoyed with netlify, and the backend was deployed with heroku. 
+
+## Screenshots
+
+![Tasks](https://github.com/antz22/OneFocus/blob/master/images/tasks.png | width=200)
+![Goals](https://github.com/antz22/OneFocus/blob/master/images/goals.png | width=200)
+![Pomodoro](https://github.com/antz22/OneFocus/blob/master/images/pomodoro.png | width=200)
 
 ## TODO
 
