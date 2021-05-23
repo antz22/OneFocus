@@ -7,7 +7,7 @@ OneFocus is an application that allows students to work and study in a motivated
 
 (separate repos for deployment purposes)
 
-![OneFocus](https://github.com/antz22/OneFocus/blob/master/images/onefocus.png | width=150)
+![OneFocus](https://github.com/antz22/OneFocus/blob/master/images/onefocus_small.png)
 
 ## Features
 
@@ -46,9 +46,9 @@ The front end was depoyed with netlify, and the backend was deployed with heroku
 
 ## Screenshots
 
-![Tasks](https://github.com/antz22/OneFocus/blob/master/images/tasks.png | width=200)
-![Goals](https://github.com/antz22/OneFocus/blob/master/images/goals.png | width=200)
-![Pomodoro](https://github.com/antz22/OneFocus/blob/master/images/pomodoro.png | width=200)
+![Tasks](https://github.com/antz22/OneFocus/blob/master/images/tasks.png)
+![Goals](https://github.com/antz22/OneFocus/blob/master/images/goals.png)
+![Pomodoro](https://github.com/antz22/OneFocus/blob/master/images/pomodoro.png)
 
 ## TODO
 
