@@ -4,16 +4,23 @@ OneFocus is an application that allows students to work and study in a motivated
 
 ## Front end: [vue-onefocus](https://github.com/antz22/vue-onefocus)
 ## Back end: [django-onefocus](https://github.com/antz22/django-onefocus)
+## Mobile App: [onefocus-ns](https://github.com/antz22/OneFocus-ns)
 
 (separate repos for deployment purposes)
 
 ## Features
+
+### Home
+
+The home page gives users an overview of their progress on tasks and goals, displaying information like how many tasks are left, how many have been completed, and the progress on goals.
 
 ### Tasks
 
 OneFocus provides a minimalistic task list that lets students organize their lives in a neat and aesthetic way. 
 
 Tasks can be added with an estimated time-to-complete, attached with a particular goal or motivation that puts the task into perspective.
+
+These Tasks can be created with a category and a priority. Tasks can then be sorted based on date, category and priority. High priority tasks are outlined in red, medium in yellow, and low in green.
 
 Users can check off tasks when they are done and archive them to remove them from the list of tasks.
 
@@ -44,7 +51,7 @@ The front end was depoyed with netlify, and the backend was deployed with heroku
 
 ## Screenshots
 
-![OneFocus](https://github.com/antz22/OneFocus/blob/master/images/onefocus_small.png)
+(Design V1)
 
 ![Tasks](https://github.com/antz22/OneFocus/blob/master/images/tasks.png)
 
@@ -52,12 +59,16 @@ The front end was depoyed with netlify, and the backend was deployed with heroku
 
 ![Pomodoro](https://github.com/antz22/OneFocus/blob/master/images/pomodoro.png)
 
+(Design V2) 
+
+![Landing](https://github.com/antz22/OneFocus/blob/master/images/landing.png)
+
+![Home](https://github.com/antz22/OneFocus/blob/master/images/home.png)
+
+![New Task](https://github.com/antz22/OneFocus/blob/master/images/taskv2.png)
+
+
+
 ## TODO
 
-- Fix pause issue
-- Allow pausing of break timer
 - Burger bar 2 size
-- Button styling
-- Create README and about page
-- Add screenshots
-- Number input width
